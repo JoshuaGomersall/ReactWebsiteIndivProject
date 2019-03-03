@@ -110,6 +110,13 @@ body {
   color: black;
 }
 
+divdis {
+  font-weight: bold;
+  font-family: Adventure;
+  background-color: #2196F3;
+  color: black;
+}
+
 infotext {
   margin-left: 15%;
   font-weight: bold;

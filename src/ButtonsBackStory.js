@@ -36,9 +36,9 @@ class Buttons extends Component {
         let wordnice = JSON.stringify(response.data);
         wordnice = wordnice.replace('['," ");
       wordnice = wordnice.replace(']'," ");
-			wordnice = wordnice.replace(/{/g," <div>");
-			wordnice = wordnice.replace(/}/g,"</div>");
-			wordnice = wordnice.replace(/\"/g," ");
+			wordnice = wordnice.replace(/{/g," <divdis>");
+			wordnice = wordnice.replace(/}/g," </divdis> </>");
+			wordnice = wordnice.replace(/\"/g, "");
 			wordnice = wordnice.replace(/,/g,"<br/>");
 
   
@@ -92,15 +92,15 @@ class Buttons extends Component {
 
         <h5 id='testid'> </h5>
 
-
-        <h5>Hook : {this.state.data.hook}
+<h5>
+        Hook : {this.state.data.hook}
         <br></br>
         Home Town : {this.state.data.hometown}
         <br></br>
-        Father : {this.state.data.father}
+        Father : {this.state.data.farther}
         <br></br>
-        Mother : {this.state.data.mother}</h5>
-
+        Mother : {this.state.data.mother}
+        </h5>
       </div>
     );
   }

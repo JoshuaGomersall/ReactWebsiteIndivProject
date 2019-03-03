@@ -34,11 +34,11 @@ class Buttons extends Component {
         
         let wordnice = JSON.stringify(response.data);
         wordnice = wordnice.replace('['," ");
-      wordnice = wordnice.replace(']'," ");
-			wordnice = wordnice.replace(/{/g," ");
-			wordnice = wordnice.replace(/}/g,"<br/>");
-			wordnice = wordnice.replace(/\"/g," ");
-			wordnice = wordnice.replace(/,/g,"<br/>");
+        wordnice = wordnice.replace(']'," ");
+        wordnice = wordnice.replace(/{/g," <divdis>");
+        wordnice = wordnice.replace(/}/g," </divdis> </br>");
+        wordnice = wordnice.replace(/\"/g, "");
+        wordnice = wordnice.replace(/,/g,"<br/>");
 
   
         document.getElementById('testid').innerHTML =  wordnice;
@@ -90,16 +90,16 @@ class Buttons extends Component {
         <input readOnly id="Label" type="text" className="blocklabel" placeholder="Invalid"></input>
 
 
-
         <h5 id='testid'> </h5>
-
-        <h5>Name : {this.state.data.playerName}
+        <h5>
+        Name : {this.state.data.playerName}
         <br></br>
         Race : {this.state.data.racename}
         <br></br>
-        Class : {this.state.data.classname}</h5>
-
-        <h5>Strength : {this.state.data.attackBonus}
+        Class : {this.state.data.classname}
+        <br></br>
+        <br></br>
+        Strength : {this.state.data.attackBonus}
         <br></br>
         Dexterity : {this.state.data.dodgeBonus}
         <br></br>
@@ -107,8 +107,8 @@ class Buttons extends Component {
         <br></br>
         Vigor : {this.state.data.vigorBonus}
         <br></br>
-        Charisma : {this.state.data.charmBonus}</h5>;
-
+        Charisma : {this.state.data.charmBonus}
+        </h5>
       </div>
     );
   }
