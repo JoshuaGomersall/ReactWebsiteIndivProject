@@ -9,8 +9,10 @@ class Buttons extends Component {
     super(props);
     this.state = {
       data: '',
-      CharacterName: '',
-      race : ''
+      hook : '',
+      hometown : '',
+      farther : '',
+      mother : ''
     }
 
     this.changeName = (e) => {
@@ -26,7 +28,7 @@ class Buttons extends Component {
     }
 
     this.getall = () => {
-      axios.get('http://localhost:8080/individual_Project/api/Player/getAllPlayers').then(response => {
+      axios.get('http://localhost:8080/individual_Project/api/BackStory/getAllBackStorys').then(response => {
         console.log(response.data);
         this.setState({
           data: response.data 
@@ -35,7 +37,7 @@ class Buttons extends Component {
     }
 
     this.getone = (e) => {
-      axios.get('http://localhost:8080/individual_Project/api/Player/getAPlayer/' + this.state.CharacterName).then(response => {
+      axios.get('http://localhost:8080/individual_Project/api/BackStory/getABackStory/' + this.state.CharacterName).then(response => {
         console.log(response.data);
         this.setState({
           data: response.data
@@ -45,7 +47,7 @@ class Buttons extends Component {
 
   this.deleteRequest = () => {
     console.log ("START DELETE");
-    axios.delete('http://localhost:8080/individual_Project/api/Player/deletePlayer/' + this.state.CharacterName).then(response => {
+    axios.delete('http://localhost:8080/individual_Project/api/BackStory/deleteBackStory/' + this.state.CharacterName).then(response => {
       console.log(response.data);
       console.log("Done");
       });
@@ -53,7 +55,7 @@ class Buttons extends Component {
 
     this.updateRequest = () => {
       console.log ("START DELETE");
-      axios.delete('http://localhost:8080/individual_Project/api/Player/deletePlayer/' + this.state.CharacterName)
+      axios.delete('http://localhost:8080/individual_Project/api/BackStory/deleteBackStory/' + this.state.CharacterName)
       .then(response => {
         console.log(response.data);
         console.log("Done");
@@ -76,21 +78,13 @@ class Buttons extends Component {
         <input readOnly id="Label" type="text" className="blocklabel" placeholder="Invalid"></input>
 
 
-        <h5>Name : {this.state.data.playerName}
+        <h5>Hook : {this.state.data.hook}
         <br></br>
-        Race : {this.state.data.racename}
+        Home Town : {this.state.data.hometown}
         <br></br>
-        Class : {this.state.data.classname}</h5>
-
-        <h5>Strength : {this.state.data.attackBonus}
+        Father : {this.state.data.farther}
         <br></br>
-        Dexterity : {this.state.data.dodgeBonus}
-        <br></br>
-        Smarts : {this.state.data.smartsBonus}
-        <br></br>
-        Vigor : {this.state.data.vigorBonus}
-        <br></br>
-        Charisma : {this.state.data.charmBonus}</h5>
+        Mother : {this.state.data.mother}</h5>
 
         {/* <h5 id='testid'> {this.response.data} </h5> */}
 

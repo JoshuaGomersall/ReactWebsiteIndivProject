@@ -20,7 +20,7 @@ class Character extends Component {
             <CharacterGen />
           </div>
           <div className="item5">
-            <h3>INFo</h3>
+            <h3></h3>
           </div>
         </div>
       </BrowserRouter>

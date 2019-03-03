@@ -1,25 +1,32 @@
 import React, { Component } from 'react';
 import './App.css';
+import axios from 'axios';
 
 class BackStoryGen extends Component {
 
-   displayStory = () => {
-      
-      let Hook = document.getElementById('backstoryhook');
-      
-      let hooktxt = '';
-      let Town = 'House'
-      let farther = '';
-      let mother = '';
+   constructor(props) {
+      super(props);
+      this.state = {
+            hook : '',
+            hometown : '',
+            farther : '',
+            mother : ''
+      }
 
+   this.addRequest = (e) => {
+      console.log ("START Adding");
 
-      let stroy = 'I lived in a' + Town + ' I lived with my mum and dad' +' my life is normal other than ' + hooktxt ;
-      console.log(stroy);
-
-
-
-      let storytxt = document.getElementById('BackStory');
-      storytxt.innerHTML = stroy;
+      axios.post(`http://localhost:8080/individual_Project/api/BackStory/createBackStory`, {
+         "hook": document.getElementById('backstoryhook').value ,
+         "hometown" : document.getElementById('hometown').value ,
+         "farther" : document.getElementById('father').value ,
+         "mother" : document.getElementById('mother').value 
+      })
+      .then(response => {
+        console.log(response.data);
+        console.log("Done");
+        });
+      };
    }
 
    render() {
@@ -27,46 +34,48 @@ class BackStoryGen extends Component {
          <div>
             <h3>
                BackStory Hook
-   <select className="backstoryhook" onChange={this.displayStory}>
-                  <option value="dontknow">I Dont Know</option>
-                  <option value="villageattacked">My Village Was Attacked</option>
-                  <option value="trained">I Trained My Whole Life In Magic Or Weapons</option>
-                  <option value="magic">I Am Naturally Gifted With Magic</option>
+   <select id="backstoryhook">
+                  <option value="I Dont Know">I Dont Know</option>
+                  <option value="My Village Was Attacked">My Village Was Attacked</option>
+                  <option value="I Trained My Whole Life In Magic Or Weapons">I Trained My Whole Life In Magic Or Weapons</option>
+                  <option value="I Am Naturally Gifted With Magic">I Am Naturally Gifted With Magic</option>
                </select>
             </h3>
 
             <h3>
                Home Town
-   <select className="hometown" onChange={this.displayStory}>
-                  <option value="dontknow">I Dont Know</option>
-                  <option value="wealthytownnoble">A Wealthy Town Were You Were A Noble</option>
-                  <option value="wealthytownworker">A Wealthy Town Were You Worked In Harsh Conditions</option>
-                  <option value="forest">In The Forest Amoungst Nature</option>
+   <select id="hometown">
+                  <option value="I Dont Know">I Dont Know</option>
+                  <option value="A Wealthy Town Were You Were A Noble">A Wealthy Town Were You Were A Noble</option>
+                  <option value="A Wealthy Town Were You Worked In Harsh Conditions">A Wealthy Town Were You Worked In Harsh Conditions</option>
+                  <option value="In The Forest Amoungst Nature">In The Forest Amoungst Nature</option>
                </select>
             </h3>
 
             <h3>
-               Farther
-   <select className="farther" onChange={this.displayStory}>
-                  <option value="dontknow">I Dont Know</option>
-                  <option value="waskilled">Was Killed While You Were Young</option>
-                  <option value="diedofoldage">Died Of Old Age</option>
-                  <option value="magic">Was A Powerful Magic User</option>
+               Father
+   <select id="father">
+                  <option value="I Dont Know">I Dont Know</option>
+                  <option value="Was Killed While You Were Young">Was Killed While You Were Young</option>
+                  <option value="Died Of Old Age">Died Of Old Age</option>
+                  <option value="Was A Powerful Magic User">Was A Powerful Magic User</option>
                </select>
             </h3>
 
             <h3>
                Mother
-   <select className="mother" onChange={this.displayStory}>
-                  <option value="dontknow">I Dont Know</option>
-                  <option value="childbirthdeath">Died During Child Birth</option>
-                  <option value="diedofoldage">Died Of Old Age</option>
-                  <option value="magic">Was A Powerful Magic User</option>
+   <select id="mother">
+                  <option value="I Dont Know">I Dont Know</option>
+                  <option value="Died During Child Birth">Died During Child Birth</option>
+                  <option value="Died Of Old Age">Died Of Old Age</option>
+                  <option value="Was A Powerful Magic User">Was A Powerful Magic User</option>
                </select>
             </h3>
 
+            <input type="submit" value="Done" onClick={this.addRequest}></input>
 
-            <input type="submit" value="Done"></input>
+         <h1 id="BackStory">
+         </h1>
          </div>
       );
    }

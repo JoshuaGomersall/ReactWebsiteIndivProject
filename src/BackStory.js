@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Route, BrowserRouter, Link, Switch } from 'react-router-dom';
 import './App.css';
-import Buttons from './Buttons';
+import ButtonsBackStory from './ButtonsBackStory';
 import BackStoryGen from './BackStoryGen';
 
 class BackStroy extends Component {
@@ -13,13 +13,13 @@ class BackStroy extends Component {
             <h1>BackStory</h1>
           </div>
           <div className="item3">
-            <Buttons />
+            <ButtonsBackStory />
           </div>
           <div className="item4">
             <BackStoryGen/>
           </div>
           <div className="item5">
-            <infotext>INFo</infotext>
+            <infotext></infotext>
           </div>
         </div>
       </BrowserRouter>

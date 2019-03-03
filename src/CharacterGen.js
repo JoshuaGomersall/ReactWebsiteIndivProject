@@ -1,8 +1,40 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
+import axios from 'axios';
 
 class CharacterGen extends Component {
+   
+   constructor(props) {
+      super(props);
+      this.state = {
+        playerName: '',
+        racename : '' ,
+        classname : '' ,
+        attackBonus: '',
+        dodgeBonus: '',
+        vigorBonus : '',
+        smartsBonus : '',
+        charmBonus : ''
+      }
+
+   this.addRequest = (e) => {
+      console.log ("START Adding");
+
+      axios.post(`http://localhost:8080/individual_Project/api/Player/createPlayer`, {
+         "playerName": document.getElementById('name').value,
+         "racename": document.getElementById('race').value,
+         "classname": document.getElementById('class').value,
+         "attackBonus": document.getElementById('Strength').innerHTML,
+         "dodgeBonus": document.getElementById('Dex').innerHTML,
+         "vigorBonus": document.getElementById('Vigor').innerHTML,
+         "smartsBonus": document.getElementById('Smart').innerHTML,
+         "charmBonus": document.getElementById('Cha').innerHTML})
+      .then(response => {
+        console.log(response.data);
+        console.log("Done");
+        });
+      };
+   }
 
    randomCharacter = () => {
       var ran1 = document.getElementById("rannumber1").innerHTML = Math.floor(Math.random() * 10) + 1;
@@ -279,25 +311,24 @@ class CharacterGen extends Component {
          classcha = 1;
       }
 
-      var strengthtotal = racestr + classstr;
-      var dextotal = racedex + classdex;
-      var smarttotal = racesmart + classsmart;
-      var vigortotal = racevigor + classvigor;
-      var chatotal = racecha + classcha;
+      let strengthtotal = racestr + classstr;
+      let dextotal = racedex + classdex;
+      let smarttotal = racesmart + classsmart;
+      let vigortotal = racevigor + classvigor;
+      let chatotal = racecha + classcha;
 
 
-      var strength = document.getElementById('Strength');
+      let strength = document.getElementById('Strength');
       strength.innerHTML = strengthtotal;
-      var dex = document.getElementById('Dex');
+      let dex = document.getElementById('Dex');
       dex.innerHTML = dextotal;
-      var smart = document.getElementById('Smart');
+      let smart = document.getElementById('Smart');
       smart.innerHTML = smarttotal;
-      var vigor = document.getElementById('Vigor');
+      let vigor = document.getElementById('Vigor');
       vigor.innerHTML = vigortotal;
-      var cha = document.getElementById('Cha');
+      let cha = document.getElementById('Cha');
       cha.innerHTML = chatotal;
    }
-
 
    render() {
       return (
@@ -346,9 +377,10 @@ class CharacterGen extends Component {
                   <p id="rannumber3"></p>
                </div>
                <input type="button" onClick={this.randomCharacter} value='Random'></input>
+               </form>
                <br></br>
-               <input type='submit' value="Add"></input>
-            </form>
+               <input type='submit' onClick={this.addRequest} value="Add"></input>
+            
 
             <h4>Character Ratings
                 <br></br>
