@@ -33,6 +33,16 @@ class Buttons extends Component {
         this.setState({
           data: response.data 
         });
+        let wordnice = JSON.stringify(response.data);
+        wordnice = wordnice.replace('['," ");
+      wordnice = wordnice.replace(']'," ");
+			wordnice = wordnice.replace(/{/g," <div>");
+			wordnice = wordnice.replace(/}/g,"</div>");
+			wordnice = wordnice.replace(/\"/g," ");
+			wordnice = wordnice.replace(/,/g,"<br/>");
+
+  
+        document.getElementById('testid').innerHTML =  wordnice;
       });
     }
 
@@ -42,6 +52,7 @@ class Buttons extends Component {
         this.setState({
           data: response.data
         });
+        document.getElementById('testid').innerHTML =  '';
       });
   }
 
@@ -51,6 +62,7 @@ class Buttons extends Component {
       console.log(response.data);
       console.log("Done");
       });
+      document.getElementById('testid').innerHTML =  '';
     };
 
     this.updateRequest = () => {
@@ -61,6 +73,7 @@ class Buttons extends Component {
         console.log("Done");
         CharacterGen.addRequest();
         });
+        document.getElementById('testid').innerHTML =  '';
       };
 }
 
@@ -77,16 +90,16 @@ class Buttons extends Component {
         <br></br><br></br>
         <input readOnly id="Label" type="text" className="blocklabel" placeholder="Invalid"></input>
 
+        <h5 id='testid'> </h5>
+
 
         <h5>Hook : {this.state.data.hook}
         <br></br>
         Home Town : {this.state.data.hometown}
         <br></br>
-        Father : {this.state.data.farther}
+        Father : {this.state.data.father}
         <br></br>
         Mother : {this.state.data.mother}</h5>
-
-        {/* <h5 id='testid'> {this.response.data} </h5> */}
 
       </div>
     );

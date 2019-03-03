@@ -31,6 +31,17 @@ class Buttons extends Component {
         this.setState({
           data: response.data 
         });
+        
+        let wordnice = JSON.stringify(response.data);
+        wordnice = wordnice.replace('['," ");
+      wordnice = wordnice.replace(']'," ");
+			wordnice = wordnice.replace(/{/g," ");
+			wordnice = wordnice.replace(/}/g,"<br/>");
+			wordnice = wordnice.replace(/\"/g," ");
+			wordnice = wordnice.replace(/,/g,"<br/>");
+
+  
+        document.getElementById('testid').innerHTML =  wordnice;
       });
     }
 
@@ -40,6 +51,7 @@ class Buttons extends Component {
         this.setState({
           data: response.data
         });
+        document.getElementById('testid').innerHTML =  '';
       });
   }
 
@@ -49,6 +61,7 @@ class Buttons extends Component {
       console.log(response.data);
       console.log("Done");
       });
+      document.getElementById('testid').innerHTML =  '';
     };
 
     this.updateRequest = () => {
@@ -59,6 +72,7 @@ class Buttons extends Component {
         console.log("Done");
         CharacterGen.addRequest();
         });
+        document.getElementById('testid').innerHTML =  '';
       };
 }
 
@@ -76,6 +90,9 @@ class Buttons extends Component {
         <input readOnly id="Label" type="text" className="blocklabel" placeholder="Invalid"></input>
 
 
+
+        <h5 id='testid'> </h5>
+
         <h5>Name : {this.state.data.playerName}
         <br></br>
         Race : {this.state.data.racename}
@@ -90,9 +107,7 @@ class Buttons extends Component {
         <br></br>
         Vigor : {this.state.data.vigorBonus}
         <br></br>
-        Charisma : {this.state.data.charmBonus}</h5>
-
-        {/* <h5 id='testid'> {this.response.data} </h5> */}
+        Charisma : {this.state.data.charmBonus}</h5>;
 
       </div>
     );
