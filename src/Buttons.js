@@ -103,24 +103,6 @@ class Buttons extends Component {
 
 
         <h5 id='testid'> </h5>
-        <h5>
-        Name : {this.state.data.playerName}
-        <br></br>
-        Race : {this.state.data.racename}
-        <br></br>
-        Class : {this.state.data.classname}
-        <br></br>
-        <br></br>
-        Strength : {this.state.data.attackBonus}
-        <br></br>
-        Dexterity : {this.state.data.dodgeBonus}
-        <br></br>
-        Smarts : {this.state.data.smartsBonus}
-        <br></br>
-        Vigor : {this.state.data.vigorBonus}
-        <br></br>
-        Charisma : {this.state.data.charmBonus}
-        </h5>
       </div>
     );
   }
