@@ -58,9 +58,11 @@ class Buttons extends Component {
 
   this.deleteRequest = () => {
     console.log ("START DELETE");
+     alert("Deleting BackStory");
     axios.delete('http://localhost:8080/individual_Project/api/BackStory/deleteBackStory/' + this.state.CharacterName).then(response => {
       console.log(response.data);
       console.log("Done");
+       alert("BackStory Deleted");
       });
       document.getElementById('testid').innerHTML =  '';
     };
@@ -71,7 +73,7 @@ class Buttons extends Component {
       .then(response => {
         console.log(response.data);
         console.log("Done");
-        CharacterGen.addRequest();
+        alert("Click Add To Confirm Changes To BackStory");
         });
         document.getElementById('testid').innerHTML =  '';
       };

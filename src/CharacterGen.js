@@ -32,6 +32,7 @@ class CharacterGen extends Component {
       .then(response => {
         console.log(response.data);
         console.log("Done");
+        alert("Character Added");
         });
       };
    }

@@ -27,6 +27,7 @@ class Buttons extends Component {
 
     this.getall = () => {
       axios.get('http://localhost:8080/individual_Project/api/Player/getAllPlayers').then(response => {
+
         console.log(response.data);
         this.setState({
           data: response.data 
@@ -57,9 +58,11 @@ class Buttons extends Component {
 
   this.deleteRequest = () => {
     console.log ("START DELETE");
+    alert("Deleting Character");
     axios.delete('http://localhost:8080/individual_Project/api/Player/deletePlayer/' + this.state.CharacterName).then(response => {
       console.log(response.data);
       console.log("Done");
+       alert("Character Deleted");
       });
       document.getElementById('testid').innerHTML =  '';
     };
@@ -70,7 +73,7 @@ class Buttons extends Component {
       .then(response => {
         console.log(response.data);
         console.log("Done");
-        CharacterGen.addRequest();
+        alert("Click Add To Confirm Changes To Character");
         });
         document.getElementById('testid').innerHTML =  '';
       };
