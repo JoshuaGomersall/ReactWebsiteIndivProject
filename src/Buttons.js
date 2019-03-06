@@ -47,12 +47,21 @@ class Buttons extends Component {
     }
 
     this.getone = (e) => {
-      axios.get('http://localhost:8080/individual_Project/api/Player/getAPlayer/' + this.state.CharacterName).then(response => {
+      axios.get('http://localhost:8080/individual_Project/api/Player/getAPlayerByName/' + this.state.CharacterName).then(response => {
         console.log(response.data);
         this.setState({
           data: response.data
         });
-        document.getElementById('testid').innerHTML =  '';
+        let wordnice = JSON.stringify(response.data);
+        wordnice = wordnice.replace('['," ");
+        wordnice = wordnice.replace(']'," ");
+        wordnice = wordnice.replace(/{/g," <divdis>");
+        wordnice = wordnice.replace(/}/g," </divdis> </br>");
+        wordnice = wordnice.replace(/\"/g, "");
+        wordnice = wordnice.replace(/,/g,"<br/>");
+
+  
+        document.getElementById('testid').innerHTML =  wordnice;
       });
   }
 
