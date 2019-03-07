@@ -28,7 +28,7 @@ class Buttons extends Component {
     }
 
     this.getall = () => {
-      axios.get('http://localhost:8080/individual_Project/api/BackStory/getAllBackStorys').then(response => {
+      axios.get('http://35.189.101.154/individual_Project/api/BackStory/getAllBackStorys').then(response => {
         console.log(response.data);
         this.setState({
           data: response.data 
@@ -47,7 +47,7 @@ class Buttons extends Component {
     }
 
     this.getone = (e) => {
-      axios.get('http://localhost:8080/individual_Project/api/BackStory/getABackStory/' + this.state.CharacterName).then(response => {
+      axios.get('http://35.189.101.154/individual_Project/api/BackStory/getABackStory/' + this.state.CharacterName).then(response => {
         console.log(response.data);
         this.setState({
           data: response.data
@@ -59,7 +59,7 @@ class Buttons extends Component {
   this.deleteRequest = () => {
     console.log ("START DELETE");
      alert("Deleting BackStory");
-    axios.delete('http://localhost:8080/individual_Project/api/BackStory/deleteBackStory/' + this.state.CharacterName).then(response => {
+    axios.delete('http://35.189.101.154/individual_Project/api/BackStory/deleteBackStory/' + this.state.CharacterName).then(response => {
       console.log(response.data);
       console.log("Done");
        alert("BackStory Deleted");
@@ -69,7 +69,7 @@ class Buttons extends Component {
 
     this.updateRequest = () => {
       console.log ("START DELETE");
-      axios.delete('http://localhost:8080/individual_Project/api/BackStory/deleteBackStory/' + this.state.CharacterName)
+      axios.delete('http://35.189.101.154/individual_Project/api/BackStory/deleteBackStory/' + this.state.CharacterName)
       .then(response => {
         console.log(response.data);
         console.log("Done");
