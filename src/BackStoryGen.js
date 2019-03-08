@@ -16,7 +16,7 @@ class BackStoryGen extends Component {
    this.addRequest = (e) => {
       console.log ("START Adding");
       alert("BackStory Added");
-      axios.post(`http://localhost:8888/individual_Project/api/BackStory/createBackStory`, {
+      axios.post(`http://35.189.101.154:8888/individual_Project/api/BackStory/createBackStory`, {
          "hook": document.getElementById('backstoryhook').value ,
          "hometown" : document.getElementById('hometown').value ,
          "farther" : document.getElementById('father').value ,
