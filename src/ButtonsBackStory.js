@@ -28,7 +28,7 @@ class Buttons extends Component {
     }
 
     this.getall = () => {
-      axios.get('http://35.189.101.154:8080/individual_Project/api/BackStory/getAllBackStorys').then(response => {
+      axios.get('http://35.189.101.154:8888/individual_Project/api/BackStory/getAllBackStorys').then(response => {
         console.log(response.data);
         this.setState({
           data: response.data 
