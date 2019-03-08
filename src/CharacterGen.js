@@ -20,7 +20,7 @@ class CharacterGen extends Component {
    this.addRequest = (e) => {
       console.log ("START Adding");
 
-      axios.post(`http://35.189.101.154/individual_Project/api/Player/createPlayer`, {
+      axios.post(`http://35.189.101.154:8080/individual_Project/api/Player/createPlayer`, {
          "playerName": document.getElementById('name').value,
          "racename": document.getElementById('race').value,
          "classname": document.getElementById('class').value,

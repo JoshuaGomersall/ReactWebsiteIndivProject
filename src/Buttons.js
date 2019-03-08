@@ -26,7 +26,7 @@ class Buttons extends Component {
     }
 
     this.getall = () => {
-      axios.get('http://35.189.101.154/individual_Project/api/Player/getAllPlayers').then(response => {
+      axios.get('http://35.189.101.154:8080/individual_Project/api/Player/getAllPlayers').then(response => {
 
         console.log(response.data);
         this.setState({
@@ -47,7 +47,7 @@ class Buttons extends Component {
     }
 
     this.getone = (e) => {
-      axios.get('http://35.189.101.154/individual_Project/api/Player/getAPlayerByName/' + this.state.CharacterName).then(response => {
+      axios.get('http://35.189.101.154:8080/individual_Project/api/Player/getAPlayerByName/' + this.state.CharacterName).then(response => {
         console.log(response.data);
         this.setState({
           data: response.data
@@ -68,7 +68,7 @@ class Buttons extends Component {
   this.deleteRequest = () => {
     console.log ("START DELETE");
     alert("Deleting Character");
-    axios.delete('http://35.189.101.154/individual_Project/api/Player/deletePlayer/' + this.state.CharacterName).then(response => {
+    axios.delete('http://35.189.101.154:8080/individual_Project/api/Player/deletePlayer/' + this.state.CharacterName).then(response => {
       console.log(response.data);
       console.log("Done");
        alert("Character Deleted");
@@ -78,7 +78,7 @@ class Buttons extends Component {
 
     this.updateRequest = () => {
       console.log ("START DELETE");
-      axios.delete('http://35.189.101.154/individual_Project/api/Player/deletePlayer/' + this.state.CharacterName)
+      axios.delete('http://35.189.101.154:8080/individual_Project/api/Player/deletePlayer/' + this.state.CharacterName)
       .then(response => {
         console.log(response.data);
         console.log("Done");
